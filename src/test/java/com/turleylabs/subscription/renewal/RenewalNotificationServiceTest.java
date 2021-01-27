@@ -3,6 +3,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -12,8 +13,7 @@ import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RenewalNotificationServiceTest {
 
@@ -22,7 +22,6 @@ public class RenewalNotificationServiceTest {
     @BeforeEach
     public void beforeEach() {
         wireMockServer.start();
-
     }
 
     @AfterEach
@@ -70,6 +69,7 @@ public class RenewalNotificationServiceTest {
     }
 
     @Test
+    @Disabled
     public void getSubscribers() throws IOException, InterruptedException {
         /*
             TODO: #5
@@ -84,6 +84,7 @@ public class RenewalNotificationServiceTest {
     }
 
     @Test
+    @Disabled
     public void parseSubscriberJson() throws JsonProcessingException {
         /*
             TODO: #6
@@ -95,10 +96,11 @@ public class RenewalNotificationServiceTest {
 
         String json = null;
         Subscriber[] subscribers = SubscriberRetriever.parseSubscriberJson(json);
-        assertEquals(1,0);
+        assertArrayEquals(null, new Subscriber[]{});
     }
 
     @Test
+    @Disabled
     public void findSubscribersExpiringSoon() {
         /*
             TODO: #7
@@ -116,6 +118,7 @@ public class RenewalNotificationServiceTest {
     }
 
     @Test
+    @Disabled
     public void createEmailJsonPayloadWithSubscriberEmails() throws JsonProcessingException {
         /*
             TODO: #8
@@ -131,6 +134,7 @@ public class RenewalNotificationServiceTest {
     }
 
     @Test
+    @Disabled
     public void sendPendingExpirationEmail() throws IOException, InterruptedException {
         /*
             TODO: #9
